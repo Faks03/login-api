@@ -1,0 +1,32 @@
+    function validateForm() {
+      // Basic validation, you can add more complex checks as needed
+      var title = document.forms["productForm"]["title"].value;
+      var description = document.forms["productForm"]["description"].value;
+      var price = document.forms["productForm"]["price"].value;
+      var stock = document.forms["productForm"]["stock"].value;
+      var image = document.forms["productForm"]["image"].value;
+
+      if (title === "" || description === "" || price === "" || stock === "" || image === "") {
+        alert("Please fill in all fields.");
+        return false;
+      }
+    }
+
+    function displayImage() {
+      var preview = document.getElementById("preview");
+      var fileInput = document.getElementById("image");
+      var file = fileInput.files[0];
+      var reader = new FileReader();
+
+      reader.onloadend = function () {
+        preview.src = reader.result;
+        preview.style.display = "block";
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        preview.src = "";
+        preview.style.display = "none";
+      }
+    }
